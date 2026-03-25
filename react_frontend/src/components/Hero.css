@@ -1,0 +1,143 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 699px;
+  overflow: hidden;
+  margin-bottom: -100px;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  max-width: 1920px;
+  height: 860px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 581px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0) 100%);
+  pointer-events: none;
+}
+
+.hero-fade-bottom {
+  position: absolute;
+  top: 118px;
+  left: 0;
+  width: 100%;
+  height: 581px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
+  pointer-events: none;
+}
+
+.hero-abstract {
+  position: absolute;
+  top: 199px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: var(--absolute-white);
+  opacity: 0.05;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 0 150px;
+  height: 100%;
+  justify-content: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.hero-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.3em;
+  color: var(--absolute-white);
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5em;
+  color: var(--grey-60);
+  margin: 0;
+  max-width: 800px;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 0 80px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 500px;
+  }
+
+  .hero-content {
+    padding: 0 40px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-image {
+    top: -40px;
+    height: 600px;
+  }
+}

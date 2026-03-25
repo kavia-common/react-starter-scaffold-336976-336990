@@ -1,0 +1,150 @@
+.navbar {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  gap: 261px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  width: 165.83px;
+  height: 50px;
+  position: relative;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.logo-text {
+  position: absolute;
+  left: 52.5px;
+  top: 16.67px;
+  width: 113.33px;
+  height: 16.67px;
+}
+
+.logo-text img {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-menu {
+  position: absolute;
+  left: 514px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 30px 8px 8px;
+  background-color: var(--black-06);
+  border: 3px solid var(--black-12);
+  border-radius: 10px;
+}
+
+.nav-button {
+  padding: 12px 20px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: var(--grey-75);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-button.active {
+  background-color: var(--black-10);
+  border: 1px solid var(--black-10);
+  color: var(--absolute-white);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-button {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.icon-button:hover {
+  opacity: 0.7;
+}
+
+.icon-button img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 20px 40px;
+    gap: 100px;
+  }
+
+  .navbar-menu {
+    left: 300px;
+    padding: 8px 15px 8px 8px;
+    gap: 8px;
+  }
+
+  .nav-button {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 16px 20px;
+    gap: 20px;
+  }
+
+  .navbar-menu {
+    position: static;
+    flex-wrap: wrap;
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .nav-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

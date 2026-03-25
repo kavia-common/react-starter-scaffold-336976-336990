@@ -1,0 +1,97 @@
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  background-color: var(--black-10);
+  border: 1px solid var(--black-15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  border-color: var(--red-45);
+  transform: translateY(-4px);
+}
+
+.pricing-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricing-plan {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5em;
+  color: var(--absolute-white);
+  margin: 0;
+}
+
+.pricing-description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: var(--grey-60);
+  margin: 0;
+}
+
+.pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price-amount {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2em;
+  color: var(--absolute-white);
+}
+
+.price-period {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5em;
+  color: var(--grey-60);
+}
+
+.pricing-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pricing-trial,
+.pricing-choose {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-card {
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .pricing-plan {
+    font-size: 20px;
+  }
+
+  .pricing-description {
+    font-size: 14px;
+  }
+
+  .price-amount {
+    font-size: 32px;
+  }
+
+  .price-period {
+    font-size: 16px;
+  }
+}
