@@ -1,0 +1,442 @@
+/* =========================================
+   Movies & Shows Page
+   Matches Figma: "Movies & Shows Page – Laptop"
+   ========================================= */
+
+.movies-shows-page {
+  width: 100%;
+  background-color: var(--black-08);
+  min-height: 100vh;
+}
+
+/* ---- Hero Section ---- */
+.ms-hero-wrapper {
+  padding: 0 80px;
+  /* Pull up to sit behind the navbar (navbar height ~98px) */
+  margin-top: -98px;
+  box-sizing: border-box;
+}
+
+.ms-hero {
+  position: relative;
+  width: 100%;
+  height: 709px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  /* Gradient border – simulates Figma stroke_FR4HUO */
+  border: 1px solid transparent;
+  background-clip: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Pseudo overlay using a proper border via box-shadow to not break bg-image */
+.ms-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid;
+  border-image: linear-gradient(180deg, rgba(38,38,38,1) 0%, rgba(38,38,38,0) 100%) 1;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ms-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 40px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Title + description, centered with side padding */
+.ms-hero-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  width: 100%;
+  padding: 0 120px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ms-hero-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5em;
+  color: var(--absolute-white);
+  margin: 0;
+}
+
+.ms-hero-description {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: var(--grey-60);
+  margin: 0;
+}
+
+/* CTA row: Play Now + secondary icons */
+.ms-hero-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ms-btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 20px;
+  background-color: var(--red-45);
+  color: var(--absolute-white);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.ms-btn-play:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+.ms-secondary-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ms-icon-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black-06);
+  border: 1px solid var(--black-15);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.ms-icon-btn:hover {
+  background-color: var(--black-10);
+  border-color: var(--grey-60);
+}
+
+/* Carousel row: prev button – dots – next button */
+.ms-carousel-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.ms-carousel-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black-06);
+  border: 1px solid var(--black-12);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.ms-carousel-btn:hover {
+  background-color: var(--black-10);
+}
+
+.ms-indicator-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ms-dot {
+  height: 4px;
+  width: 23px;
+  border-radius: 2px;
+  background-color: #333333;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s, width 0.2s;
+}
+
+.ms-dot.active {
+  background-color: var(--red-45);
+  width: 36px;
+}
+
+/* ---- Catalog Wrapper ---- */
+.ms-catalog-wrapper {
+  padding: 0 80px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-bottom: 80px;
+}
+
+/* ---- Catalog Section ---- */
+.catalog-section {
+  display: flex;
+  flex-direction: column;
+  /* Negative gap: header overlaps the top of the panel (Figma gap: -22px) */
+  gap: 0;
+}
+
+/* Header: tag label left, tab buttons right */
+.catalog-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -1px; /* sit just above the panel border */
+}
+
+.catalog-section-tag-wrap {
+  /* slightly elevated so the red tag appears to overlap the panel */
+  transform: translateY(50%);
+}
+
+.catalog-section-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  background-color: var(--red-45);
+  color: var(--absolute-white);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5em;
+  border-radius: 6px;
+}
+
+.catalog-section-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* Shift tabs down so they visually align with the panel top */
+  transform: translateY(50%);
+}
+
+.catalog-tab-btn {
+  padding: 10px 16px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: var(--grey-75);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.catalog-tab-btn:hover {
+  color: var(--absolute-white);
+}
+
+.catalog-tab-btn.active {
+  color: var(--absolute-white);
+  font-weight: 600;
+  border-bottom-color: var(--red-45);
+}
+
+/* Dark bordered panel wrapping the grid */
+.catalog-grid-panel {
+  background-color: var(--black-06);
+  border: 1px solid var(--black-15);
+  border-radius: 12px;
+  padding: 60px 40px 40px; /* extra top padding to clear the floating header */
+}
+
+/* 4-column grid for movie cards */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ---- Movie Card ---- */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+}
+
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-card-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--black-10);
+}
+
+.movie-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-card-genre-icon {
+  font-size: 48px;
+  opacity: 0.6;
+}
+
+.movie-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.movie-card:hover .movie-card-overlay {
+  opacity: 1;
+}
+
+.movie-play-btn {
+  width: 48px;
+  height: 48px;
+  background-color: var(--red-45);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.movie-play-btn:hover {
+  background-color: #cc0000;
+  transform: scale(1.1);
+}
+
+.movie-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.movie-card-title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: var(--absolute-white);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.movie-card-year {
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: var(--grey-60);
+}
+
+.movie-card-separator {
+  color: var(--grey-60);
+  font-size: 10px;
+}
+
+.movie-card-genre {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.movie-card-rating {
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: var(--grey-60);
+  margin-left: auto;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .ms-hero-wrapper  { padding: 0 40px; }
+  .ms-catalog-wrapper { padding: 0 40px 60px; }
+  .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+  .ms-hero-text-container { padding: 0 60px; }
+}
+
+@media (max-width: 900px) {
+  .ms-hero-wrapper  { padding: 0 20px; margin-top: -60px; }
+  .ms-hero          { height: 500px; }
+  .ms-catalog-wrapper { padding: 0 20px 60px; margin-top: 40px; }
+  .ms-hero-text-container { padding: 0 20px; }
+  .ms-hero-title    { font-size: 22px; }
+  .ms-hero-description { font-size: 14px; }
+  .catalog-section-header { flex-direction: column; align-items: flex-start; padding: 0 20px; gap: 12px; }
+  .catalog-section-tag-wrap { transform: none; }
+  .catalog-section-tabs { transform: none; }
+  .catalog-grid-panel { padding: 40px 20px 20px; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .catalog-tab-btn { padding: 8px 10px; font-size: 12px; }
+  .ms-hero-actions-row { flex-direction: column; gap: 12px; }
+}

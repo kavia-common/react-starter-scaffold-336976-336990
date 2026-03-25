@@ -1,3 +1,7 @@
+/* =========================================
+   App Layout Styles
+   ========================================= */
+
 .App {
   min-height: 100vh;
   display: flex;
@@ -5,6 +9,11 @@
   background-color: var(--black-08);
 }
 
+/*
+ * Main content area.
+ * Pages with hero sections use negative margin-top to create
+ * the overlapping hero-under-navbar effect from the Figma design.
+ */
 .main-content {
   flex: 1;
   width: 100%;
