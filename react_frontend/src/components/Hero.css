@@ -1,30 +1,72 @@
+/* =========================================
+   Hero Section – Figma: Home Page - Laptop
+   Hero uses a mosaic of movie-tile rows as
+   background, overlaid with gradient fades
+   and centered text content.
+   ========================================= */
+
 .hero {
   position: relative;
   width: 100%;
   height: 699px;
   overflow: hidden;
+  /* Negative margin lets content below overlap visually */
   margin-bottom: -100px;
+  background-color: var(--black-08);
 }
 
-.hero-background {
+/* ---- Mosaic tile background ---- */
+.hero-mosaic {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Each row is slightly taller than 1/4 of 699px to allow overlap */
+  padding: 0;
 }
 
-.hero-image {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  max-width: 1920px;
-  height: 860px;
-  object-fit: cover;
+/* One horizontal row of tiles */
+.hero-mosaic-row {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  /* Prevent row from shrinking */
+  min-height: 0;
+  /* Rows scroll left; odd rows scroll right */
+  animation: scroll-left 60s linear infinite;
+  /* Use enough total width so the animation loops seamlessly */
+  width: max-content;
+}
+
+.hero-mosaic-row:nth-child(even) {
+  animation-name: scroll-right;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Individual tile image */
+.hero-tile {
+  flex-shrink: 0;
+  width: 140px;
+  height: 100%;
   border-radius: 12px;
+  object-fit: cover;
+  display: block;
 }
 
+/* ---- Gradient overlays (top → transparent, transparent → bottom) ---- */
 .hero-fade-top {
   position: absolute;
   top: 0;
@@ -33,6 +75,7 @@
   height: 581px;
   background: linear-gradient(180deg, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0) 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-fade-bottom {
@@ -43,8 +86,10 @@
   height: 581px;
   background: linear-gradient(180deg, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
+/* Soft centre glow to make text pop */
 .hero-abstract {
   position: absolute;
   top: 199px;
@@ -56,8 +101,11 @@
   opacity: 0.05;
   border-radius: 50%;
   filter: blur(100px);
+  pointer-events: none;
+  z-index: 2;
 }
 
+/* ---- Centered text + CTA ---- */
 .hero-content {
   position: relative;
   z-index: 10;
@@ -83,7 +131,7 @@
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 48px;
-  line-height: 1.3em;
+  line-height: 1.5em;
   color: var(--absolute-white);
   margin: 0;
 }
@@ -91,20 +139,36 @@
 .hero-subtitle {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5em;
   color: var(--grey-60);
   margin: 0;
   max-width: 800px;
+  text-align: center;
 }
 
 .hero-cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  padding: 14px 24px;
+  background-color: var(--red-45);
+  color: var(--absolute-white);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Responsive */
+.hero-cta:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+/* ---- Responsive ---- */
 @media (max-width: 1024px) {
   .hero-content {
     padding: 0 80px;
@@ -112,10 +176,6 @@
 
   .hero-title {
     font-size: 38px;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
   }
 }
 
@@ -132,12 +192,21 @@
     font-size: 28px;
   }
 
-  .hero-subtitle {
-    font-size: 14px;
+  .hero-tile {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 20px;
   }
 
-  .hero-image {
-    top: -40px;
-    height: 600px;
+  .hero-title {
+    font-size: 22px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
   }
 }
